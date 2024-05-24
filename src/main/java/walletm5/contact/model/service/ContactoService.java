@@ -10,4 +10,5 @@ public interface ContactoService {
 	boolean editar(Contacto contacto);
 	boolean eliminar(int id);
 	List<Contacto> obtenerContactosPorWallet(int walletId);
+	Contacto obtenerPorId(int id);
 }

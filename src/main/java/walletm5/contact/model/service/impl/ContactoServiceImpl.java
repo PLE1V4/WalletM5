@@ -34,4 +34,11 @@ public class ContactoServiceImpl implements ContactoService {
 		return contactoDao.obtenerContactosPorWallet(walletId);
 	}
 
+	@Override
+	public Contacto obtenerPorId(int id) {
+		return contactoDao.obtenerPorId(id);
+	}
+	
+	
+
 }

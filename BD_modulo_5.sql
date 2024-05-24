@@ -50,14 +50,13 @@ alter table wallets auto_increment=100000;
 
 -- Tabla Contactos
 
-
-
 create table contactos (
 contact_id int primary key auto_increment,
 wallet_id int not null,
 contact_name Varchar(50) not null,
 acc_number int not null,
-foreign key (wallet_id) references wallets(wallet_id)
+foreign key (wallet_id) references wallets(wallet_id),
+foreign key (acc_number) references cuentas(acc_number)
 );
 
 -- Tabla Transacciones
@@ -68,9 +67,7 @@ sender_id int not null,
 receiver_id int not null,
 amount double not null,
 fecha_ts date not null,
-ts_type int not null,
-foreign key (sender_id) references usuarios (user_id),
-foreign key (receiver_id) references contactos (contact_id)
+ts_type int not null
 );
 
 insert into monedas values(1,'Chilean Peso','CLP$',1);
@@ -81,9 +78,13 @@ Insert into usuarios (nombres, apellidos, email,contrasena) values
 
 insert into cuentas (acc_balance,acc_currency) values
 (500000,1);
+insert into cuentas (acc_balance,acc_currency) values
+(100000,1);
 
 insert into wallets(wallet_user_id,wallet_acc_num) values
 (1,1000000);
 
+insert into contactos(wallet_id,contact_name,acc_number) values
+(100000,"Bob el Constructor",1000001);
 
 

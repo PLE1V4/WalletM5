@@ -9,6 +9,7 @@ import java.util.List;
 import walletm5.contact.model.dao.ContactoDao;
 import walletm5.contact.model.entidad.Contacto;
 import walletm5.shared.dao.DAO;
+import walletm5.usuario.model.entidad.Usuario;
 
 
 public class ContactoDaoImpl extends DAO implements ContactoDao {
@@ -67,7 +68,7 @@ public class ContactoDaoImpl extends DAO implements ContactoDao {
 			
 			while(rsl.next()) {
 				
-					int id = rsl.getInt("contact_kid");
+					int id = rsl.getInt("contact_id");
 					int wallet = rsl.getInt("wallet_id");
 					String name = rsl.getString("contact_name");
 					int acc = rsl.getInt("acc_number");
@@ -85,4 +86,33 @@ public class ContactoDaoImpl extends DAO implements ContactoDao {
 		
 	}
 
+	@Override
+	public Contacto obtenerPorId(int id) {
+		try {
+			Contacto contacto=null;
+		
+		
+			String query="select contact_id,wallet_id,contact_name,acc_number from contactos where contact_id="+id;
+			
+			ResultSet rsl= this.consultar(query);
+			
+			while(rsl.next()) {
+					
+					int contactId=rsl.getInt("contact_id");
+					int wallet= rsl.getInt("wallet_id");
+					String nombre= rsl.getString("contact_name");
+					int cuenta = rsl.getInt("acc_number");
+				
+					contacto= new Contacto(contactId,wallet,nombre, cuenta);
+				
+			}
+			
+			return contacto;
+		} catch (SQLException e) {
+			System.out.print(e.getMessage());
+			return null;
+		}
+	}
+
+	
 }

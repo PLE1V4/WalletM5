@@ -1,8 +1,11 @@
 package walletm5.shared.controller;
 
+import java.io.IOException;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,8 +15,6 @@ import walletm5.usuario.model.dao.impl.UsuarioDaoImpl;
 import walletm5.usuario.model.entidad.Usuario;
 import walletm5.usuario.model.service.UsuarioService;
 import walletm5.usuario.model.service.impl.UsuarioServiceImpl;
-
-import java.io.IOException;
 
 /**
  * Servlet implementation class login

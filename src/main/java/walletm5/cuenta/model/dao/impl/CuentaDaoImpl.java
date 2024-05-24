@@ -33,7 +33,7 @@ public class CuentaDaoImpl extends DAO implements CuentaDao {
 		double saldo = cuenta.getSaldo();
 		int moneda = cuenta.getId_moneda();
 		
-		String query="update  usuarios ";
+		String query="update cuentas";
 		query+=" set acc_balance="+saldo+", acc_currency="+moneda;
 		query+=" where acc_number="+cuenta.getNumeroCuenta();
 		

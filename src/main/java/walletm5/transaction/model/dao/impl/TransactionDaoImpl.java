@@ -18,11 +18,10 @@ public class TransactionDaoImpl extends DAO implements TransactionDao {
 		int sender = transaction.getSernderId();
 		int receiver = transaction.getReceiverId();
 		double amount = transaction.getAmount();
-		Date fecha = transaction.getFecha();
 		int tipo = transaction.getTipo();
 		
 		String query="insert into transactions (sender_id,receiver_id,amount,fecha_ts,ts_type)";
-		query+=" values("+sender+","+receiver+","+amount+",'"+fecha+"',"+tipo+")";
+		query+=" values("+sender+","+receiver+","+amount+",curdate(),"+tipo+")";
 		
 		int registrosAfectados=ejecutarSql(query);
 		boolean resultado= (registrosAfectados>0);
